@@ -1,0 +1,42 @@
+#!/usr/bin/make -f 
+#KSRC=/home/arch/build-iso/pkgs/linux-image/debian/build/build-amd64-none-amd64-vyos/
+INSTALL_MOD_PATH=${CURDIR}/debian/vyos-e1000e
+
+%:
+	dh $@
+build:
+	echo $(KSRC)
+ifeq ($(KSRC),)
+        @echo "Please execute debuild like the following "
+        @echo "debuild --set-envvar KSRC=/path/to/build-iso/pkgs/linux-image/debian/build/build-amd64-none-amd64-vyos/ -uc -us"
+	exit 1
+else
+	dh_testdir
+	echo $(INSTALL_MOD_PATH)
+	( cd src ; make KSRC=$(KSRC) )
+endif
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+	echo $(INSTALL_MOD_PATH)
+#	( cd src ; make install KSRC=$(KSRC) INSTALL_MOD_PATH=$(INSTALL_MOD_PATH) )
+
+
+clean:
+ifeq ($(KSRC),)
+        @echo "Please execute debuild like the following "
+        @echo "debuild --set-envvar KSRC=/path/to/build-iso/pkgs/linux-image/debian/build/build-amd64-none-amd64-vyos/ clean"
+	exit 1
+else
+	dh_testdir
+	dh_auto_clean
+	dh_clean
+	( cd src ; make KSRC=$(KSRC) clean )
+endif
+
+binary-arch: build install
+
+binary: binary-arch

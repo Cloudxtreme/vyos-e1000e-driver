@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+KVAR=`uname -r`
+
+find /lib/modules/${KVAR} -name 'e1000e.ko' -exec rm -f {} \; > /dev/null || true
+touch /tmp/preinst
+
+#DEBHELPER#

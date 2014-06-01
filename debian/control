@@ -1,0 +1,11 @@
+Source: vyos-e1000e
+Maintainer: Hiroyuki Sato <hiroysato@gmail.com>
+Section: kernel
+Priority: optional
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 5)
+
+Package: vyos-e1000e
+Architecture: any
+Depends: 
+Description: Intel e1000e driver

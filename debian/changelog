@@ -1,0 +1,5 @@
+vyos-e1000e (3.0.4) UNRELEASED; urgency=low
+
+  * Initial release.
+
+ -- Hiroyuki Sato <hiroysato@gmail.com>  Sat, 24 May 2014 05:47:39 +0900
