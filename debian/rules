@@ -1,5 +1,5 @@
 #!/usr/bin/make -f 
-#KSRC=/home/arch/build-iso/pkgs/linux-image/debian/build/build-amd64-none-amd64-vyos/
+#KSRC=/path/to/build-iso/pkgs/linux-image/debian/build/build-amd64-none-amd64-vyos/
 INSTALL_MOD_PATH=${CURDIR}/debian/vyos-e1000e
 
 %:
